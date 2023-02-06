@@ -6,11 +6,11 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 02:52:36 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:18:46 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 23:30:22 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_unsignednumber(int fd, unsigned int nb)
 {

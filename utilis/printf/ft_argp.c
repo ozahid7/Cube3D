@@ -6,11 +6,11 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:31:20 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:18:22 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 23:29:57 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_counterp(unsigned long n)
 {

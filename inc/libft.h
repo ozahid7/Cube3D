@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 00:25:56 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/07 00:25:57 by ozahid-          ###   ########.fr       */
+/*   Created: 2021/11/07 15:46:44 by ajafy             #+#    #+#             */
+/*   Updated: 2023/02/06 23:43:40 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
+# include <string.h>
 
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlcat(char *dst, char *src);
+void	free2d(char **str);
+char	*ft_strchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
+char	*ft_strdup(const char *s);
+int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlen(const char *str);
-char	*get_next_line(int fd);
+
+
+
+
 
 #endif

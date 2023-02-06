@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 23:49:19 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/07 00:25:00 by ozahid-          ###   ########.fr       */
+/*   Created: 2021/11/03 18:48:14 by ajafy             #+#    #+#             */
+/*   Updated: 2023/02/06 22:56:47 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../inc/libft.h"
 
-#include "cube.h"
-
-int	main (int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	int	fd;
-	(void)ac;
-	
-	if (check_extention(av[1]))
-		print(2, "Extention Error\n");
-	fd = open("../maps/map.cub", O_RDONLY);
-	if (fd == -1)
-		print(2, "MapFile Error\n");
-		
+	unsigned int	i;
+
+	i = 0;
+	while (s1 && s2 && (s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	{
+		if ((unsigned char) s1[i] == (unsigned char) s2[i])
+			i++;
+		else if ((unsigned char) s1[i] > (unsigned char) s2[i])
+			return (1);
+		else
+			return (-1);
+	}
+	return (0);
 }

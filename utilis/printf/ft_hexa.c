@@ -6,11 +6,11 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 03:44:48 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:17:54 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 23:30:04 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_counter(unsigned int n)
 {

@@ -1,25 +1,23 @@
-NAME = cube
+NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 INC = -I ./inc
 BUILD = build
 
-SRC = src/main.c\
-	utilis/printf/ft_printf.c utilis/printf/ft_putchar.c \
-	utilis/printf/ft_putstr.c utilis/printf/ft_putnbr.c utilis/printf/ft_argp.c\
-	utilis/printf/ft_hexa.c utilis/printf/ft_unsignednumber.c\
-	utilis/get_next_line/get_next_line_utils.c utilis/get_next_line/get_next_line.c\
+HEADERS = ${wildcard inc/*.h}
+# i should change the wildcard with the static file names
+SRC = ${wildcard src/*.c} ${wildcard src/**/*.c} ${wildcard utilis/*.c} ${wildcard utilis/**/*.c}
 
 OBJ = $(addprefix build/, $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(HEADERS)
 	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJ) -o $(NAME)
 	@echo "successfully maked"
 	
-build/%.o : %.c
+build/%.o : %.c $(HEADERS)
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 clean :

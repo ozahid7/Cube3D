@@ -1,3 +1,4 @@
 build
-cube
+cub3D
 *.o
+.vscode
