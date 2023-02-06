@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:04:50 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 19:02:07 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 22:43:33 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free2d(char **str)
 
 	i = 0;
 	if (str == 0)
-		return (0);
+		return ;
 	while (str[i])
 	{
 		free(str[i]);

@@ -6,13 +6,13 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 00:06:55 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 19:54:44 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 22:55:39 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/get_next_line.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

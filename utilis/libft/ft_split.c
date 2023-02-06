@@ -1,6 +1,32 @@
 
 #include "../../inc/libft.h"
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*p;
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s))
+		p = (char *)malloc(ft_strlen(s) - start);
+	else
+		p = (char *)malloc(len + 1);
+	if (!p)
+		return (NULL);
+	while (s[start] != '\0' && i < len)
+	{
+		p[i] = s[start];
+		start++;
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
+}
+
 static int	ft_compteur(char const *s, char c)
 {
 	int	i;
@@ -60,7 +86,7 @@ static char	**ft_remp(char **p, char const *s, char c)
 		{
 			p[tab] = ft_substr(s, i, j - i);
 			if (!p[tab])
-				return (free2d(p));
+				return (free2d(p), NULL);
 			tab++;
 		}
 		i = ft_iter(s, i, j);

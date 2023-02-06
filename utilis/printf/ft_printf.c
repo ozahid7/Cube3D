@@ -6,11 +6,11 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:40:27 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:56:53 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 23:30:09 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_print(int fd, char c, va_list ptr)
 {

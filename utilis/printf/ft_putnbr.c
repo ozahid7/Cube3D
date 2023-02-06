@@ -6,11 +6,11 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:06:42 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:18:38 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 23:30:16 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_putnbr(int fd, long nb)
 {
