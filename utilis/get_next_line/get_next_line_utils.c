@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 00:06:55 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/05 21:09:32 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 19:54:44 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-size_t	ft_strlcat(char *dst, char *src)
+int	ft_strlcat(char *dst, char *src)
 {
-	size_t	i;
-	size_t	dlen;
+	int	i;
+	int	dlen;
 
 	if (src == 0)
 		return (0);

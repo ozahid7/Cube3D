@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:46:52 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 20:37:17 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include "ft_printf.h"
+#include "libft.h"
 #include "get_next_line.h"
 
 //Parcing

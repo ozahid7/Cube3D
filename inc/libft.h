@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 15:46:44 by ajafy             #+#    #+#             */
-/*   Updated: 2023/02/06 19:02:31 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 22:21:51 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_strdup(const char *s);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
+char	*ft_strrchr(const char *s, int c)
+
 
 #endif

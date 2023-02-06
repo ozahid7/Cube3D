@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 21:06:09 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 19:54:55 by ozahid-          ###   ########.fr       */
+/*   Created: 2023/02/06 22:21:16 by ozahid-           #+#    #+#             */
+/*   Updated: 2023/02/06 22:21:41 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../inc/libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*str;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlcat(char *dst, char *src);
-int		ft_strlen(char *str);
-char	*get_next_line(int fd);
-
-#endif
+	str = (char *) s;
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	while (i != 0)
+	{
+		if (str[i] == (char)c)
+			return (&str[i]);
+			i--;
+	}
+	if (str[i] == (char)c)
+		return (&str[i]);
+	return (NULL);
+}
