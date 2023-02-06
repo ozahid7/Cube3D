@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 00:06:56 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:46:52 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,9 @@
 #include <math.h>
 #include "ft_printf.h"
 #include "get_next_line.h"
+
+//Parcing
+char	**get_data(int fd);
+int		check_extention(char *mapfile);
 
 #endif

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 23:49:19 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:47:00 by ozahid-          ###   ########.fr       */
+/*   Created: 2021/11/06 15:30:27 by ajafy             #+#    #+#             */
+/*   Updated: 2023/02/06 19:01:31 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../inc/libft.h"
 
-#include "cube.h"
-
-int	main (int ac, char **av)
+char	*ft_strdup(const char *s)
 {
-	int	fd;
-	(void)ac;
-	
-	if (check_extention(av[1]))
-		print(2, "Extention Error\n");
-	fd = open("../maps/map.xpm", O_RDONLY);
-	if (fd == -1)
-		print(2, "MapFile Error\n");
-		
+	char	*p;
+	int		i;
+	if (s == 0)
+		return (0);
+	p = (char *)malloc(ft_strlen(s) + 1);
+	i = 0;
+	if (!p)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		p[i] = s[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }
