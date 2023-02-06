@@ -6,12 +6,12 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/06 23:31:57 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/07 00:25:18 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
-#define CUBE_H
+# define CUBE_H
 
 #include <unistd.h>
 #include <stdlib.h>
