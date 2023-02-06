@@ -6,7 +6,7 @@ INC = -I ./inc
 BUILD = build
 
 HEADERS = ${wildcard inc/*.h}
-# you should change the wildcard with the static file names
+# i should change the wildcard with the static file names
 SRC = ${wildcard src/*.c} ${wildcard src/**/*.c} ${wildcard utilis/*.c} ${wildcard utilis/**/*.c}
 
 OBJ = $(addprefix build/, $(SRC:.c=.o))
