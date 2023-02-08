@@ -14,7 +14,7 @@ int	check_extention(char *av1)
 	return (0);
 }
 
-int	tab2dlen(char **str)
+int	print2d(char **str)
 {
 	int	i;
 
@@ -29,36 +29,17 @@ int	tab2dlen(char **str)
 	return (i);
 }
 
-char	**ft_realloc(char **map, int len, char *alocate)
+int	open_file(int fd, char *av)
 {
-	char	**tmp;
-	int		i;
-
-	tmp = malloc(sizeof(char *) * len + 2);
-	if (!tmp)
-		return (NULL);
-	i = 0;
-	while (map && i < len){
-		tmp[i] = map[i];
-		i++;
-	}
-	tmp[i++] = alocate;
-	tmp[i] = NULL;
-	return (tmp);
-}
-
-
-char	**get_map(char **map, char *line)
-{
-	
 	int		len;
-	char	**tmp = NULL;
-	
+	char	*path;
+
 	len = 0;
-	while (map && map[len])
-	{
-		len++;
-	}
-	tmp = ft_realloc(map, len, line);
-	return (tmp);
+	path = ft_strjoin(ft_strdup("maps/"), av);
+	fd = open(path, O_RDWR);
+	free(path);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return(0);
 }
