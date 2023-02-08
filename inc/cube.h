@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/07 00:25:18 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/08 05:27:57 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@
 #include "libft.h"
 #include "get_next_line.h"
 
+typedef struct s_map
+{
+	char	**map;
+}	t_map;
+
+
 //Parcing
-char	**get_data(int fd);
 int		check_extention(char *mapfile);
 
+//CloningMap
+char	**ft_realloc(char **map, int len, char *alocate);
+char	**get_map(char **map, char *line);
 #endif
