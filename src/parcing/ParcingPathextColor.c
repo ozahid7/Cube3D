@@ -14,64 +14,40 @@ int	check_extention(char *av1)
 	return (0);
 }
 
-int	print2d(char **str)
+char	**ft_realoc(char **str, int len, char *allocate)
 {
-	int	i;
+	int		i;
+	char	**map;
 
+	map = malloc(sizeof(char *) * (len + 2));
 	i = 0;
-	if (!str)
-		return (0);
-	while(str[i])
+	if (str != NULL)
 	{
-		print(1, "%s", str[i]);
-		i++;
+		while (str[i])
+		{
+			map[i] = str[i];
+			i++;
+		}
 	}
-	return (i);
+	map[i++] = allocate;
+	map[i] = 0;
+	return (map);
 }
 
-int	get_len(char *path)
+char	**get_map(char **str, char *allocate)
 {
 	int		len;
-	char	*line;
-	int		fd;
+	char	**map;
 
 	len = 0;
-	fd = open(path, O_RDWR);
-	if (fd == -1)
-		return(print(2, "Opning File Error\n"), -1);
-	line = get_next_line(fd);
-	while (line)
+	if (str == NULL)
+		len = 1;
+	else
 	{
-		len++;
-		line = get_next_line(fd);
+		while (str[len])
+			len++;
 	}
-	close(fd);
-	return(len);
-}
-
-char	**ft_alloc(char *path, t_map *map)
-{
-	int		len;
-	char	*line;
-	int		i;
-	int		fd;
-
-	i = 0;
-	len = get_len(path);
-	fd = open(path, O_RDWR);
-	if (fd == -1)
-		return(print(2, "Opning File Error\n"), NULL);
-	map->map = malloc(sizeof(char *) * len + 1);
-	if (!map->map)
-		return (NULL);
-	print(1, "here\n");
-	line = get_next_line(fd);
-	while (map->map && line)
-	{
-		map->map[i] = line;
-		i++;
-		line = get_next_line(fd);
-	}
-	map->map[i] = NULL;
-	return(map->map);
+	map = ft_realoc(str, len, allocate);
+	free (str);
+	return (map);
 }

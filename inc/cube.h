@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/09 01:41:30 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/09 06:14:54 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ typedef struct s_map
 }	t_map;
 
 
+//tmpfunctions
+void	print2d(char **str);
+int		len2d(char **str);
 //Parcing
 int		check_extention(char *mapfile);
-int		get_len(char *path);
-char	**ft_alloc(char *path, t_map *map);
+char	**ft_realoc(char **str, int len, char *allocate);
+char	**get_map(char **str, char *allocate);
+
 
 //CloningMap
-char	**ft_realloc(char **map, int len, char *alocate);
-char	**get_map(char **map, char *line);
+//char	**ft_realloc(char **map, int len, char *alocate);
 #endif
