@@ -1,4 +1,4 @@
-#include "cube.h"
+#include "../../inc/cube.h"
 
 int	check_extention(char *av1)
 {
@@ -13,13 +13,3 @@ int	check_extention(char *av1)
 		return (1);
 	return (0);
 }
-
-// char	**get_data(int fd)
-// {
-// 	char	**data;
-// 	int		i;
-// 	int		j;
-
-// 	i = 0;
-
-// }

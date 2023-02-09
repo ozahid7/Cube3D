@@ -1,32 +1,40 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 23:49:19 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/09 16:05:31 by ajafy            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cube.h"
 
-int	main(void)
+char	**clone_data(int ac, char *av, t_map *map)
 {
-	// int		fd;
+	int		fd;
+	char	*path;
+	char	*line;
+	int		len;
+
+	fd = 0;
+	len = 0;
+	if (ac != 2)
+		return (print(2, "Invalid Arguments\n"), NULL);
+	if (check_extention(av))
+		return (print(2, "Extention Error\n"), NULL);
+	path = ft_strjoin(ft_strdup("maps/"), av);
+	free(path);
+	fd = open(path, O_RDWR);
+	if (fd == -1)
+		return (print(1, "Opening File Error\n"), NULL);
+	line = get_next_line(fd);
+	while (line)
+	{
+		map->tab = get_map(map->tab, line);
+		line = get_next_line(fd);
+	}
+	return (map->tab);
+}
+
+int	main(int ac, char **av)
+{
 	t_map	*map;
 
-	map = NULL;
-	// if (ac != 2)
-	// 	exit(1);
-	// if (check_extention(av[1]))
-	// 	print(2, "Extention Error\n");
-	// fd = open("maps/map.cub", O_RDONLY);
-	// if (fd == -1)
-	// 	print(2, "MapFile Error\n");
+	map->tab = NULL;
+	map->tab = clone_data(ac, av[1], map);
 	map = remplir_map(map);
 	if (!parse_map(map))
 		exit(1);
-	print(1, "okey\n");
+	print2d(map->tab);
 }

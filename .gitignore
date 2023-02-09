@@ -1,4 +1,5 @@
 build
+tmp.c
 cub3D
 *.o
 .vscode
