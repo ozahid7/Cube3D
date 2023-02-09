@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:49:19 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/09 06:15:47 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:18:41 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	main (int ac, char **av)
 	t_map	map;
 	map.map = NULL;
 	map.map = clone_data(ac, av[1], &map);
+	print2d(map.map);
 }
