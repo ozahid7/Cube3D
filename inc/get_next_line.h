@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 00:25:56 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/07 00:25:57 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/08 03:20:12 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlcat(char *dst, char *src);
-size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
+int		check(char *tab);
+char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen(const char *str);
 
 #endif
