@@ -3,120 +3,119 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 03:14:21 by ozahid-           #+#    #+#             */
-/*   Updated: 2022/05/01 05:33:38 by ozahid-          ###   ########.fr       */
+/*   Created: 2022/01/07 10:52:40 by ajafy             #+#    #+#             */
+/*   Updated: 2023/02/07 22:56:49 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/get_next_line.h"
+#include"get_next_line.h"
 
-int	newline(char *str)
+char	*boucle(char *tab, char *str, int i, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	while (!check(tab))
 	{
-		if (str[i] == '\n')
+		str = (char *)malloc(BUFFER_SIZE + 1);
+		if (!str)
+			return (NULL);
+		i = read(fd, str, BUFFER_SIZE);
+		if (i < 0)
 		{
-			return (1);
+			free(str);
+			return (NULL);
 		}
-		i++;
+		if (i == 0)
+		{
+			free(str);
+			break ;
+		}
+		else
+		{
+			str[i] = '\0';
+			tab = ft_strjoin(tab, str);
+			free(str);
+		}
 	}
-	return (0);
+	return (tab);
 }
 
-char	*ft_check(char *str)
+static char	*lire_fichier(char *tab, int fd)
 {
+	char	*str;
 	int		i;
-	char	*dst;
 
 	i = 0;
-	if (!str[i])
-		return (free(str), NULL);
-	while (str[i] && str[i] != '\n')
-		i++;
-	i += (str[i] == '\n');
-	dst = malloc(sizeof(char) * i + 1);
-	if (!dst)
-		return (0);
-	i = 0;
-	while (str[i] && str[i] != '\n')
+	str = NULL;
+	if (!tab)
 	{
-		dst[i] = str[i];
-		i++;
+		tab = ft_strdupg("");
+		if (!tab)
+			return (NULL);
 	}
-	if (str[i] == '\n')
-	{
-		dst[i] = str[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (boucle(tab, str, i, fd));
 }
 
-char	*ft_rest(char *str)
+static char	*laligne(char *tab)
 {
-	char	*rest;
-	int		i;
-	int		a;
-
-	i = 0;
-	a = 0;
-	if (!str)
-		return (0);
-	while (str[i] && str[i] != '\n')
-		i++;
-	i += (str[i] == '\n');
-	rest = malloc(sizeof(char) * ft_strlen(str) - i + 1);
-	if (!rest)
-		return (0);
-	while (str[i])
-		rest[a++] = str[i++];
-	rest[a] = '\0';
-	free(str);
-	return (rest);
-}
-
-char	*ft_read(int fd, char *buffer)
-{
-	int		nb;
 	char	*line;
+	int		i;
+	int		j;
 
-	nb = 1;
-	line = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	i = 0;
+	j = 0;
+	if (!tab[i])
+		return (NULL);
+	while (tab[i] != '\n' && tab[i])
+		i++;
+	i++;
+	line = (char *)malloc(i + 1);
 	if (!line)
-		return (0);
-	while (!newline(buffer) && nb != 0)
+		return (NULL);
+	while (j < i && tab[j])
 	{
-		nb = read(fd, line, BUFFER_SIZE);
-		if (nb == 0)
-			return (free(line), buffer);
-		if (nb == -1)
-			return (free(buffer), free(line), NULL);
-		line[nb] = 0;
-		buffer = ft_strjoin(buffer, line);
-	}	
-	return (free(line), buffer);
+		line[j] = tab[j];
+		j++;
+	}
+	line[j] = 0;
+	return (line);
+}
+
+static char	*filtre(char *tab)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (tab[i] != '\n' && tab[i])
+		i++;
+	if (!tab[i])
+	{
+		free(tab);
+		return (NULL);
+	}
+	i++;
+	str = (char *)malloc((ft_strlen(tab) - i) + 1);
+	if (!str)
+		return (NULL);
+	while (tab[i])
+		str[j++] = tab[i++];
+	str[j] = '\0';
+	free (tab);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*tab;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buffer = ft_read(fd, buffer);
-	if (!buffer)
-		return (0);
-	line = ft_check(buffer);
-	if (line == 0)
-		return (0);
-	buffer = ft_rest(buffer);
+	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	tab = lire_fichier(tab, fd);
+	line = laligne(tab);
+	tab = filtre(tab);
 	return (line);
 }

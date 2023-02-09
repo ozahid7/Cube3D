@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 15:46:44 by ajafy             #+#    #+#             */
-/*   Updated: 2023/02/06 23:43:40 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/09 15:50:39 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,5 @@ int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlen(const char *str);
-
-
-
-
 
 #endif
