@@ -1,14 +1,16 @@
 #include "cube.h"
 
-char	**clone_data(int ac, char *av, t_map *map)
+char	**clone_data(int ac, char *av)
 {
 	int		fd;
 	char	*path;
+	char	**str;
 	char	*line;
 	int		len;
 
 	fd = 0;
 	len = 0;
+	str = NULL;
 	if (ac != 2)
 		return (print(2, "Invalid Arguments\n"), NULL);
 	if (check_extention(av))
@@ -21,20 +23,20 @@ char	**clone_data(int ac, char *av, t_map *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		map->tab = get_map(map->tab, line);
+		str = get_map(str, line);
 		line = get_next_line(fd);
 	}
-	return (map->tab);
+	return (str);
 }
 
 int	main(int ac, char **av)
 {
 	t_map	*map;
+	char	**str;
 
-	map->tab = NULL;
-	map->tab = clone_data(ac, av[1], map);
+	str = clone_data(ac, av[1]);
+	map = ft_lstnew(str, get_max_len(str), ft_size(str));
 	map = remplir_map(map);
 	if (!parse_map(map))
 		exit(1);
-	print2d(map->tab);
 }

@@ -7,7 +7,7 @@ t_map	*ft_lstnew(char **map, int len, int size)
 	newlst = (t_map *) malloc(sizeof(t_map));
 	if (!newlst)
 		return (NULL);
-	newlst->tab = map;
+	newlst->map = map;
 	newlst->max_len = len;
 	newlst->size_tab = size;
 	newlst->pos = '\0';

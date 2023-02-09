@@ -11,64 +11,60 @@ int	valid_chars(t_map *map)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 0;
-	k = 0;
-	while (map->tab[i])
+	while (map->map[i])
 	{
 		j = 0;
-		while (map->tab[i][j])
+		while (map->map[i][j])
 		{
-			if (map->tab[i][j] != '1' || map->tab[i][j] != '0' \
-			|| map->tab[i][j] != ' ' || k > 1 || !is_char(map->tab[i][j]))
+			if (map->map[i][j] != '1' && map->map[i][j] != '0' \
+			&& map->map[i][j] != ' ' && !is_char(map->map[i][j]))
 				return (0);
-			if (is_char(map->tab[i][j]))
+			if (is_char(map->map[i][j]))
 			{
-				map->pos = map->tab[i][j];
-				k++;
+				if (map->pos != '\0')
+					return (0);
+				map->pos = map->map[i][j];
 			}
 			j++;
 		}
 		i++;
 	}
+	if (map->pos == '\0')
+		return (0);
 	return (1);
 }
 
 int	check_bords(t_map *map)
 {
-	int	i;
 	int	j;
 	int	len;
 
-	len = 0;
-	if (!map)
+	len = map->size_tab - 1;
+	if (!map->map)
 		return (0);
-	i = 0;
-	len = map->size_tab - 2;
-	while (map->tab[i])
+	j = 0;
+	while (map->map[0][j])
 	{
-		j = 0;
-		while (map->tab[i][j])
-		{
-			if (map->tab[i][j] != '1' && map->tab[i][j] != ' ')
-				return (0);
-			j++;
-		}
-		i = len;
-		i++;
-		len++;
+		if (map->map[0][j] != '1' && map->map[0][j] != ' ')
+			return (0);
+		j++;
+	}
+	j = 0;
+	while (map->map[len][j])
+	{
+		if (map->map[len][j] != '1' && map->map[len][j] != ' ')
+			return (0);
+		j++;
 	}
 	return (1);
 }
 
 int	parse_map(t_map *map)
 {
-	if (!check_bords(map))
-		return (print(2, "Erreur, map ouverte 0!"), 0);
-	if (!check_map(map))
-		return (print(2, "Erreur, map ouverte 1!"), 0);
-	print(1, "he\n");
+	if (!check_bords(map) || !check_map(map))
+		return (print(2, "Erreur, map ouverte !"), 0);
 	if (!valid_chars(map))
 		return (print(2, "Erreur, invalide map !"), 0);
 	return (1);

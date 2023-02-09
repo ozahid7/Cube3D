@@ -14,7 +14,7 @@
 //struct_map
 typedef struct s_map
 {
-	char	**tab;
+	char	**map;
 	int		size_tab;
 	int		max_len;
 	char	pos;
@@ -31,6 +31,8 @@ int		parse_map(t_map *map);
 t_map	*ft_lstnew(char **map, int len, int size);
 char	**ft_realoc(char **str, int len, char *allocate);
 char	**get_map(char **str, char *allocate);
+int		get_max_len(char **str);
+int		ft_size(char **tab);
 
 //CloningMap
 //char	**ft_realloc(char **map, int len, char *alocate);

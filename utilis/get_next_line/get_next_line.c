@@ -56,7 +56,6 @@ static char	*laligne(char *tab)
 		return (NULL);
 	while (tab[i] != '\n' && tab[i])
 		i++;
-	i++;
 	line = (char *)malloc(i + 1);
 	if (!line)
 		return (NULL);
