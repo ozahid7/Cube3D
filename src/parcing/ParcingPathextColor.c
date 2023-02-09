@@ -29,17 +29,49 @@ int	print2d(char **str)
 	return (i);
 }
 
-int	open_file(int fd, char *av)
+int	get_len(char *path)
 {
 	int		len;
-	char	*path;
+	char	*line;
+	int		fd;
 
 	len = 0;
-	path = ft_strjoin(ft_strdup("maps/"), av);
 	fd = open(path, O_RDWR);
-	free(path);
 	if (fd == -1)
-		return (1);
+		return(print(2, "Opning File Error\n"), -1);
+	line = get_next_line(fd);
+	while (line)
+	{
+		len++;
+		line = get_next_line(fd);
+	}
 	close(fd);
-	return(0);
+	return(len);
+}
+
+char	**ft_alloc(char *path, t_map *map)
+{
+	int		len;
+	char	*line;
+	int		i;
+	int		fd;
+
+	i = 0;
+	len = get_len(path);
+	fd = open(path, O_RDWR);
+	if (fd == -1)
+		return(print(2, "Opning File Error\n"), NULL);
+	map->map = malloc(sizeof(char *) * len + 1);
+	if (!map->map)
+		return (NULL);
+	print(1, "here\n");
+	line = get_next_line(fd);
+	while (map->map && line)
+	{
+		map->map[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	map->map[i] = NULL;
+	return(map->map);
 }
