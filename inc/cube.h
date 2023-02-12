@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/12 17:10:59 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/12 20:10:40 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int		len2d(char **str);
 //Parcing
 int		check_extention(char *mapfile);
 char	**clone_data(int ac, char *av);
+void	split_file(t_map *map, char **file);
 char	**ft_realoc(char **str, int len, char *allocate);
-char	**get_map(char **str, char *allocate);
+char	**get_file(char **str, char *allocate);
 
 
 //CloningMap
