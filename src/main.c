@@ -1,49 +1,57 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 23:49:19 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/09 17:18:41 by ozahid-          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "cube.h"
 
-char	**clone_data(int ac, char *av, t_map *map)
+void	split_file(t_map *map, char **file)
 {
-	int		fd;
-	char	*path;
-	char	*line;
+	int		i;
+	size_t	j;
 	int		len;
-	
-	fd = 0;
+
+	i = 0;
 	len = 0;
-	if (ac != 2)
-		return(print(2, "Invalid Arguments\n"), NULL);
-	if (check_extention(av))
-		return(print(2, "Extention Error\n"), NULL);
-	path = ft_strjoin(ft_strdup("maps/"), av);
-	free(path);
-	fd = open(path, O_RDWR);
-	if (fd == -1)
-		return (print(1, "Opening File Error\n"), NULL);
-	line = get_next_line(fd);
-	while (line)
+	while (file[i])
 	{
-		map->map = get_map(map->map, line);
-		line = get_next_line(fd);
+		j = 0;
+		if (file[i][j] == '1')
+		{
+			while (file[i] && file[i][j] == '1')
+				j++;
+			if (j == ft_strlen(file[i]))
+				break ;
+		}
+		i++;
 	}
-	return(map->map);
+	len = i;
+	map->paco = malloc(sizeof(char *) * len + 1);
+	if (!map->paco)
+		return ;
+	while (file[i])
+		i++;
+	map->map = malloc(sizeof(char *) * i + 1);
+	if (!map->map)
+		return ;
+	i = 0;
+	while (file[i] && i < len)
+	{
+		map->paco[i] = file[i];
+		i++;
+	}
+	map->paco[i] = 0;
+	j = 0;
+	while (file[i])
+		map->map[j++] = file[i++];
+	map->map[j] = 0;
+	
 }
 
 int	main (int ac, char **av)
 {
 	t_map	map;
-	map.map = NULL;
-	map.map = clone_data(ac, av[1], &map);
+	char	**file;
+
+	file = NULL;
+	file = clone_data(ac, av[1]);
+	split_file(&map, file);
+	//print2d(map.paco);
 	print2d(map.map);
 }

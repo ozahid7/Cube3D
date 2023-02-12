@@ -1,5 +1,34 @@
 #include "../../inc/cube.h"
 
+char	**clone_data(int ac, char *av)
+{
+	int		fd;
+	char	*path;
+	char	*line;
+	char	**file;
+	int		len;
+	
+	fd = 0;
+	len = 0;
+	file = NULL;
+	if (ac != 2)
+		return(print(2, "Invalid Arguments\n"), NULL);
+	if (check_extention(av))
+		return(print(2, "Extention Error\n"), NULL);
+	path = ft_strjoin(ft_strdup("maps/"), av);
+	free(path);
+	fd = open(path, O_RDWR);
+	if (fd == -1)
+		return (print(1, "Opening File Error\n"), NULL);
+	line = get_next_line(fd);
+	while (line)
+	{
+		file = get_map(file, line);
+		line = get_next_line(fd);
+	}
+	return(file);
+}
+
 char	**ft_realoc(char **str, int len, char *allocate)
 {
 	int		i;
