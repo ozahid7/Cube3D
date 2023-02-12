@@ -1,14 +1,16 @@
 #include "../../inc/cube.h"
 
-char	**clone_data(int ac, char *av, t_map *map)
+char	**clone_data(int ac, char *av)
 {
 	int		fd;
 	char	*path;
 	char	*line;
+	char	**file;
 	int		len;
 	
 	fd = 0;
 	len = 0;
+	file = NULL;
 	if (ac != 2)
 		return(print(2, "Invalid Arguments\n"), NULL);
 	if (check_extention(av))
@@ -21,10 +23,10 @@ char	**clone_data(int ac, char *av, t_map *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		map->map = get_map(map->map, line);
+		file = get_map(file, line);
 		line = get_next_line(fd);
 	}
-	return(map->map);
+	return(file);
 }
 
 char	**ft_realoc(char **str, int len, char *allocate)

@@ -39,11 +39,6 @@ char	*ft_check(char *str)
 		dst[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-	{
-		dst[i] = str[i];
-		i++;
-	}
 	dst[i] = '\0';
 	return (dst);
 }
