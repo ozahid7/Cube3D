@@ -11,6 +11,6 @@ int	main (int ac, char **av)
 	file = NULL;
 	file = clone_data(ac, av[1]);
 	split_file(&map, file);
-	print2d(map.paco);
-	print2d(map.map);
+	if (map.paco && map.paco[1])
+		parse_paco(map.paco);
 }
