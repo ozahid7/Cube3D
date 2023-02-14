@@ -7,10 +7,13 @@ int	main (int ac, char **av)
 {
 	t_map	map;
 	char	**file;
+	char	**paco;
 
 	file = NULL;
+	paco = NULL;
 	file = clone_data(ac, av[1]);
-	split_file(&map, file);
-	if (map.paco && map.paco[1])
-		parse_paco(map.paco);
+	paco = split_file(&map, file);
+	print2d(paco);
+	if (paco && paco[1])
+		parse_paco(paco);
 }

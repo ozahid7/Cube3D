@@ -1,19 +1,22 @@
 #include "../../inc/cube.h"
 
-void	get_paco(t_map *map, char **file, int len)
+char	**get_paco(char **file, int len)
 {
-	int	i;
+	int		i;
+	char	**paco;
 
 	i = 0;
-	map->paco = malloc(sizeof(char *) * len + 1);
-	if (!map->paco)
-		return ;
+	paco = NULL;
+	paco = malloc(sizeof(char *) * len + 1);
+	if (!paco)
+		return (NULL);
 	while (file[i] && i < len)
 	{
-		map->paco[i] = file[i];
+		paco[i] = file[i];
 		i++;
 	}
-	map->paco[i] = 0;
+	paco[i] = 0;
+	return (paco);
 }
 
 void	get_map(t_map *map, char **file, int len, int j)
@@ -33,11 +36,12 @@ void	get_map(t_map *map, char **file, int len, int j)
 	map->map[i] = 0;
 }
 
-void	split_file(t_map *map, char **file)
+char	**split_file(t_map *map, char **file)
 {
 	int		i;
 	size_t	j;
 	int		len;
+	char	**paco;
 
 	i = 0;
 	len = 0;
@@ -54,8 +58,9 @@ void	split_file(t_map *map, char **file)
 		i++;
 	}
 	len = i;
-	get_paco(map, file, len);
+	paco = get_paco(file, len);
 	while (file[i])
 		i++;
 	get_map(map, file, i, len);
+	return (paco);
 }

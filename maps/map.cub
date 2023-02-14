@@ -1,8 +1,8 @@
-NO   ./Pictures/wall_1_grey.xpm
+NO   ./Pictures/wall_1_grey.xpm	
 EA   ./Pictures/wall_2_green.xpm
 SO   ./Pictures/wall_3_blue.xpm
-WE   ./Pictures/wall_4_red.xpm
-
+WE   ./Pictures/wall_4_red.xpm                
+      
 
 
 F 91,95 144
