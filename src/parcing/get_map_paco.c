@@ -36,10 +36,37 @@ void	get_map(t_map *map, char **file, int len, int j)
 	map->map[i] = 0;
 }
 
-char	**split_file(t_map *map, char **file)
+int	where_ismap(char *line)
 {
 	int		i;
 	size_t	j;
+	int		one;
+	int		zero;
+
+	i = 0;
+	j = 0;
+	one = 0;
+	zero = 0;
+	while (line[i])
+	{
+		if (line[i] == '1')
+			one = 1;
+		if (line[i] == '0')
+			zero = 1;
+		if (line[i] == ' ' || line[i] == '1' || line[i] == '0')
+		{
+			j++;
+		}
+		i++;
+	}
+	if ((zero != 0 || one != 0) && j == ft_strlen (line))
+		return (1);
+	return (0);
+}
+
+char	**split_file(t_map *map, char **file)
+{
+	int		i;
 	int		len;
 	char	**paco;
 
@@ -47,14 +74,8 @@ char	**split_file(t_map *map, char **file)
 	len = 0;
 	while (file[i])
 	{
-		j = 0;
-		if (file[i][j] == '1')
-		{
-			while (file[i] && file[i][j] == '1')
-				j++;
-			if (j == ft_strlen(file[i]))
-				break ;
-		}
+		if (where_ismap(file[i]))
+			break ;
 		i++;
 	}
 	len = i;

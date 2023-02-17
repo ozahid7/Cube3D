@@ -19,6 +19,4 @@ int	main (int ac, char **av)
 	paco = split_file(&map, file);
 	if (paco && paco[1])
 		parse_paco(&map, paco);
-	print (1, "dir.no =  %s\n", dir->no);
-	print(1, "color f = %d | color c = %d \n", color->f, color->c);
 }
