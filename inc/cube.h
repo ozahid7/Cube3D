@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/15 00:56:45 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:16:06 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,35 @@
 #include "libft.h"
 #include "get_next_line.h"
 
+
+typedef struct s_color
+{
+	int	f;
+	int	c;
+}	t_color;
 typedef struct s_dir
 {
 	int		n;
 	int		s;
 	int		w;
 	int		e;
+	int		ci;
+	int		fi;
 	char	*no;
 	char	*so;
+	char	*c;
+	char	*f;
 	char	*we;
 	char	*ea;
+	t_color color;
 }	t_dir;
+
 
 typedef struct s_map
 {
 	char	**map;
 	t_dir	dir;
-	int		f;
-	int		c;
+	t_color	color;
 }	t_map;
 
 
@@ -54,7 +65,8 @@ char	**split_file(t_map *map, char **file);
 char	**ft_realoc(char **str, int len, char *allocate);
 char	**get_file(char **str, char *allocate);
 int		parse_paco(t_map *map, char **paco);
-
+void	get_rgb(t_map *map, char **paco);
+int		parse_color(t_map *map);
 
 //CloningMap
 //char	**ft_realloc(char **map, int len, char *alocate);
