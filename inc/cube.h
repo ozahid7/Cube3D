@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/14 01:33:08 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/15 00:56:45 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 
 typedef struct s_dir
 {
+	int		n;
+	int		s;
+	int		w;
+	int		e;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -34,7 +38,7 @@ typedef struct s_dir
 typedef struct s_map
 {
 	char	**map;
-	t_dir	*dir;
+	t_dir	dir;
 	int		f;
 	int		c;
 }	t_map;
@@ -49,7 +53,7 @@ char	**clone_data(int ac, char *av);
 char	**split_file(t_map *map, char **file);
 char	**ft_realoc(char **str, int len, char *allocate);
 char	**get_file(char **str, char *allocate);
-int		parse_paco(char **paco);
+int		parse_paco(t_map *map, char **paco);
 
 
 //CloningMap
