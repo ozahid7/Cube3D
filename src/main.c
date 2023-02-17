@@ -6,16 +6,19 @@
 int	main (int ac, char **av)
 {
 	t_map	map;
-	//t_dir	dir;
-	t_color	color;
+	t_dir	*dir;
+	t_color	*color;
 	char	**file;
 	char	**paco;
 
 	file = NULL;
 	paco = NULL;
+	dir = &map.dir;
+	color = &dir->color;
 	file = clone_data(ac, av[1]);
 	paco = split_file(&map, file);
 	if (paco && paco[1])
 		parse_paco(&map, paco);
-	print(1, "color f = %d | color c = %d \n", color.f, color.c);
+	print (1, "dir.no =  %s\n", dir->no);
+	print(1, "color f = %d | color c = %d \n", color->f, color->c);
 }

@@ -42,7 +42,6 @@ int	parse_rgb(char **cf)
 	r = r<<16;
 	g = g<<8;
 	color = r + g + b;
-	print (1, "color = %d \n", color);
 	return (color);
 }
 
@@ -53,7 +52,6 @@ int	parse_color(t_map *map)
 	
 	floor = NULL;
 	ceiling = NULL;
-	print(1, "f = %s\n", map->dir.f);
 	floor = ft_split(map->dir.f, ',');
 	if (len2d(floor) != 3)
 		return (1);
