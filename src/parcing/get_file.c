@@ -1,6 +1,6 @@
 #include "../../inc/cube.h"
 
-char	**clone_data(int ac, char *av)
+char	**clone_data(char *av)
 {
 	int		fd;
 	char	*line;
@@ -10,8 +10,6 @@ char	**clone_data(int ac, char *av)
 	fd = 0;
 	len = 0;
 	file = NULL;
-	if (ac != 2)
-		return (print(2, "Invalid Arguments\n"), NULL);
 	if (check_extention(av))
 		return (print(2, "Extention Error\n"), NULL);
 	fd = open(av, O_RDWR);
