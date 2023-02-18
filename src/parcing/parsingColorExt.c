@@ -60,5 +60,9 @@ int	parse_color(t_map *map)
 	if (len2d(ceiling) != 3)
 		return (1);
 	map->dir.color.c = parse_rgb(ceiling);
+	free2d(floor);
+	free2d(ceiling);
+	free(map->dir.c);
+	free(map->dir.f);
 	return (0);
 }
