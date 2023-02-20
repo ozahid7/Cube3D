@@ -47,7 +47,7 @@ int	check_map(t_map *map)
 		j = 0;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == '0')
+			if (map->map[i][j] == '0' || map->map[i][j] == map->pos)
 			{
 				if (!go_right(map->map[i], j) || !go_left(map->map[i], j))
 					return (0);

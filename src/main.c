@@ -31,12 +31,16 @@ char	**clone_data(int ac, char *av)
 
 int	main(int ac, char **av)
 {
-	t_map	*map;
-	char	**str;
+	t_map		*map;
+	char		**str;
 
 	str = clone_data(ac, av[1]);
+	if (!str)
+		exit (0);
 	map = ft_lstnew(str, get_max_len(str), ft_size(str));
 	map = remplir_map(map);
+	map->p = init_player();
 	if (!parse_map(map))
 		exit(1);
+	render_map(map);
 }

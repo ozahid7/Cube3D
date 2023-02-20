@@ -26,6 +26,8 @@ int	valid_chars(t_map *map)
 				if (map->pos != '\0')
 					return (0);
 				map->pos = map->map[i][j];
+				map->p.x = i;
+				map->p.y = j;
 			}
 			j++;
 		}
@@ -63,9 +65,9 @@ int	check_bords(t_map *map)
 
 int	parse_map(t_map *map)
 {
-	if (!check_bords(map) || !check_map(map))
-		return (print(2, "Erreur, map ouverte !"), 0);
 	if (!valid_chars(map))
 		return (print(2, "Erreur, invalide map !"), 0);
+	if (!check_bords(map) || !check_map(map))
+		return (print(2, "Erreur, map ouverte !"), 0);
 	return (1);
 }
