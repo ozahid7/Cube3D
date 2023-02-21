@@ -46,35 +46,45 @@ void	my_mlx_pixel_put(t_win *t, int color, int x, int y)
 	}
 }
 
-void	ft_draw_map(t_map **head_map)
+void    ft_draw_map(t_map **head_map)
 {
-	t_map	*map;
-	int		i;
-	int		j;
+    t_map    *map;
+    int        i;
+    int        j;
+    int        x;
+    int        y;
 
-	i = 0;
-	map = *head_map;
-	while (map->map[i])
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (map->map[i][j] == '0' || map->map[i][j] == map->pos)
-				my_mlx_pixel_put(&(map->t), (0x000000), j * SIZE, i * SIZE);
-			if (map->map[i][j] == '1')
-				my_mlx_pixel_put(&(map->t), (0xFFFFFF), j * SIZE, i * SIZE);
-			if (map->map[i][j] == map->pos)
-				draw_player(map, j * SIZE, i * SIZE);
-			j++;
-		}
-		i++;
-	}
+    map = *head_map;
+    i = map->p.x - 10;
+    if (i < 0)
+        i = 0;
+    x = 0;
+    while (map->map[i] && x <= 20)
+    {
+        j = map->p.y - 10;
+        if (j < 0)
+            j = 0;
+        y = 0;
+        while (map->map[i][j] && y <= 20)
+        {
+            if (map->map[i][j] == '0' || map->map[i][j] == map->pos)
+                my_mlx_pixel_put(&(map->t), (0x000000), y * SIZE, x * SIZE);
+            if (map->map[i][j] == '1')
+                my_mlx_pixel_put(&(map->t), (0xFFFFFF), y * SIZE, x * SIZE);
+            if (map->map[i][j] == map->pos)
+                draw_player(map, y * SIZE, x * SIZE);
+            j++;
+            y++;
+        }
+        i++;
+        x++;
+    }
 }
 
 void	render_map(t_map *map)
 {
 	map->t.mlx = mlx_init();
-	map->t.mlx_win = mlx_new_window(map->t.mlx, (map->max_len * SIZE), (map->size_tab * SIZE), "Minimap");
+	map->t.mlx_win = mlx_new_window(map->t.mlx, (21 * SIZE), (21 * SIZE), "Minimap");
 	ft_draw_map(&map);
 	mlx_hook(map->t.mlx_win, 2, 14, exec_key, map);
 	mlx_loop(map->t.mlx);
