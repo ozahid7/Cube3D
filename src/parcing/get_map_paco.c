@@ -30,9 +30,15 @@ void	get_map(t_map *map, char **file, int len, int j)
 	while (file[j])
 	{
 		map->map[i] = file[j];
+		if (ft_strlen(map->map[i]) == 0)
+		{
+			print(2, "Invalid Map\n");
+			exit (0);
+		}
 		i++;
 		j++;
 	}
+
 	map->map[i] = 0;
 }
 

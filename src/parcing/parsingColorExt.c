@@ -1,4 +1,3 @@
-
 #include "../../inc/cube.h"
 
 int	check_extention(char *av1)
@@ -32,15 +31,15 @@ void	get_rgb(t_map *map, char **paco)
 int	parse_rgb(char **cf)
 {
 	int	r;
-	int g;
+	int	g;
 	int	b;
 	int	color;
 
 	r = ft_atoi(cf[0]);
 	g = ft_atoi(cf[1]);
 	b = ft_atoi(cf[2]);
-	r = r<<16;
-	g = g<<8;
+	r = r << 16;
+	g = g << 8;
 	color = r + g + b;
 	return (color);
 }
@@ -49,7 +48,7 @@ int	parse_color(t_map *map)
 {
 	char	**floor;
 	char	**ceiling;
-	
+
 	floor = NULL;
 	ceiling = NULL;
 	floor = ft_split(map->dir.f, ',');
