@@ -3,4 +3,4 @@ tmp.c
 cub3D
 *.o
 .vscode
-.DS_Store
+*.DS_Store
