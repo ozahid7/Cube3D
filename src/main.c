@@ -1,8 +1,6 @@
 
 #include "cube.h"
 
-
-
 int	main (int ac, char **av)
 {
 	t_map	mapp;
@@ -19,7 +17,7 @@ int	main (int ac, char **av)
 
 	map = ft_lstnew(&mapp);
 	map = remplir_map(map);
-	map->p = init_player();
+	map->player = init_player();
 	if (!parse_map(map))
 		exit(1);
 	render_map(map);

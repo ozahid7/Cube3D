@@ -6,7 +6,7 @@
 /*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/21 00:46:50 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:52:26 by ozahid-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ typedef struct s_map
 	t_color		color;
 	int			size_tab;
 	int			max_len;
-	char		pos;
-	t_win		t;
-	t_player	p;
+	char		direction;
+	t_win		win;
+	t_player	player;
 }	t_map;
 
 

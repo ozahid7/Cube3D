@@ -23,17 +23,17 @@ int	valid_chars(t_map *map)
 				return (0);
 			if (is_char(map->map[i][j]))
 			{
-				if (map->pos != '\0')
+				if (map->direction != '\0')
 					return (0);
-				map->pos = map->map[i][j];
-				map->p.x = i;
-				map->p.y = j;
+				map->direction = map->map[i][j];
+				map->player.x = i;
+				map->player.y = j;
 			}
 			j++;
 		}
 		i++;
 	}
-	if (map->pos == '\0')
+	if (map->direction == '\0')
 		return (0);
 	return (1);
 }

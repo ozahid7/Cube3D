@@ -10,11 +10,11 @@ t_map	*ft_lstnew(t_map *map)
 	newlst->map = map->map;
 	newlst->max_len = get_max_len(map->map);
 	newlst->size_tab = ft_size(map->map);
-	newlst->t.mlx = NULL;
+	newlst->win.mlx = NULL;
 	newlst->dir = map->dir;
 	newlst->color = map->color;
-	newlst->t.mlx_win = NULL;
-	newlst->pos = '\0';
+	newlst->win.mlx_win = NULL;
+	newlst->direction = '\0';
 	return (newlst);
 }
 
