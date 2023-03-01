@@ -1,9 +1,24 @@
 #include"cube.h"
 
-int	is_char(char c)
+int	is_char(char c, t_map *map, int i)
 {
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	if (!i)
+	{
+		if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
+	}
+	if ((c == 'N' || c == 'S' || c == 'E' || c == 'W') && i)
+	{
+		if (c == 'N')
+			map->player.rotation_angle = PI / 2;
+		if (c == 'S')
+			map->player.rotation_angle = (PI * 3) / 2;
+		if (c == 'E')
+			map->player.rotation_angle = PI * 2;
+		if (c == 'W')
+			map->player.rotation_angle = PI;
+		return (1);
+	}
 	return (0);
 }
 
@@ -19,15 +34,17 @@ int	valid_chars(t_map *map)
 		while (map->map[i][j])
 		{
 			if (map->map[i][j] != '1' && map->map[i][j] != '0' \
-			&& map->map[i][j] != ' ' && !is_char(map->map[i][j]))
+			&& map->map[i][j] != ' ' && !is_char(map->map[i][j], map, 0))
 				return (0);
-			if (is_char(map->map[i][j]))
+			if (is_char(map->map[i][j], map, 1))
 			{
 				if (map->direction != '\0')
 					return (0);
 				map->direction = map->map[i][j];
 				map->player.x = i;
 				map->player.y = j;
+				map->player.x_screen = i * SIZE;
+				map->player.y_screen = j * SIZE;
 			}
 			j++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:52:24 by ozahid-           #+#    #+#             */
-/*   Updated: 2023/02/22 23:52:26 by ozahid-          ###   ########.fr       */
+/*   Updated: 2023/02/24 23:30:11 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-# define SIZE 16
+# define SIZE 32
 # define PI (3.141592653589793)
 
 //struct_windows
@@ -31,6 +31,8 @@ typedef struct s_win
 {
 	void	*mlx;
 	void	*mlx_win;
+	int		win_width;
+	int		win_height;
 }	t_win;
 
 //struct_player
@@ -38,9 +40,12 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
+	int		x_screen;
+	int		y_screen;
 	int		rotation_direction;
 	int		deplacement_direction;
 	double	rotation_angle;
+	double	vue_angle;
 	double	move_speed;
 	double	rotation_speed;
 }	t_player;
@@ -68,6 +73,12 @@ typedef struct s_dir
 	t_color color;
 }	t_dir;
 
+typedef struct s_rays
+{
+	double	num_rays;
+	double	wall_width;
+	double	ray_angle;
+}	t_rays;
 
 typedef struct s_map
 {
@@ -78,6 +89,7 @@ typedef struct s_map
 	int			max_len;
 	char		direction;
 	t_win		win;
+	t_rays		rays;
 	t_player	player;
 }	t_map;
 
@@ -108,6 +120,9 @@ t_player	init_player(void);
 //render minimap
 void		render_map(t_map *map);
 void		ft_draw_map(t_map **head_map);
+void	player_vue(t_map *map, int x, int y);
+void	cast_rays(t_map *map, int x, int y);
+void	draw_player(t_map *map, int x, int y);
 
 //move_player
 int			exec_key(int key, t_map *map);

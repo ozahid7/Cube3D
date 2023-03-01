@@ -13,8 +13,8 @@ int	main (int ac, char **av)
 		return (1);
 	paco = split_file(&mapp, file);
 	if (paco && paco[1])
-		parse_paco(&mapp, paco);
-
+		if (parse_paco(&mapp, paco))
+			exit(0);
 	map = ft_lstnew(&mapp);
 	map = remplir_map(map);
 	map->player = init_player();
