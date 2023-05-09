@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   2dlenandPrint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:54:07 by ajafy             #+#    #+#             */
-/*   Updated: 2023/05/05 09:54:08 by ajafy            ###   ########.fr       */
+/*   Created: 2023/05/05 11:02:22 by ajafy             #+#    #+#             */
+/*   Updated: 2023/05/05 11:02:24 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "../../inc/cube.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+void	print2d(char **str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (s1 && s2 && (s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	if (!str)
+		return ;
+	while (str[i])
 	{
-		if ((unsigned char) s1[i] == (unsigned char) s2[i])
-			i++;
-		else if ((unsigned char) s1[i] > (unsigned char) s2[i])
-			return (1);
-		else
-			return (-1);
+		print(1, "%s\n", str[i]);
+		i++;
 	}
-	return (0);
+}
+
+int	len2d(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }

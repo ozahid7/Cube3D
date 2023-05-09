@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:54:07 by ajafy             #+#    #+#             */
-/*   Updated: 2023/05/05 09:54:08 by ajafy            ###   ########.fr       */
+/*   Created: 2023/05/05 09:55:51 by ajafy             #+#    #+#             */
+/*   Updated: 2023/05/05 10:30:16 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "inc/cube.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+int	main(int ac, char **av)
 {
-	unsigned int	i;
+	t_map	mapp;
+	t_map	*map;
+	char	**file;
+	char	**paco;
 
-	i = 0;
-	while (s1 && s2 && (s1[i] != '\0' || s2[i] != '\0') && (i < n))
-	{
-		if ((unsigned char) s1[i] == (unsigned char) s2[i])
-			i++;
-		else if ((unsigned char) s1[i] > (unsigned char) s2[i])
-			return (1);
-		else
-			return (-1);
-	}
-	return (0);
+	file = clone_data(ac, av[1]);
+	if (!file)
+		return (1);
+	paco = split_file(&mapp, file);
+	if (paco && paco[1])
+		if (parse_paco(&mapp, paco))
+			exit(0);
+	map = ft_lstnew(&mapp, 'm');
+	map = remplir_map(map);
+	map->player = init_player();
+	if (!parse_map(map))
+		exit(1);
+	render_map(map);
 }

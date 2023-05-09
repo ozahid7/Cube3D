@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsingColorExt.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/05 11:02:35 by ajafy             #+#    #+#             */
+/*   Updated: 2023/05/05 11:02:36 by ajafy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cube.h"
 
 int	check_extention(char *av1)
@@ -54,11 +66,11 @@ int	parse_color(t_map *map)
 	floor = ft_split(map->dir.f, ',');
 	if (len2d(floor) != 3)
 		return (1);
-	map->dir.color.f = parse_rgb(floor);
+	map->color.f = parse_rgb(floor);
 	ceiling = ft_split(map->dir.c, ',');
 	if (len2d(ceiling) != 3)
 		return (1);
-	map->dir.color.c = parse_rgb(ceiling);
+	map->color.c = parse_rgb(ceiling);
 	free2d(floor);
 	free2d(ceiling);
 	free(map->dir.c);

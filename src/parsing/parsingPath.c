@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsingPath.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozahid- <ozahid-@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/05 11:02:45 by ajafy             #+#    #+#             */
+/*   Updated: 2023/05/06 16:32:03 by ozahid-          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cube.h"
 
 void	putnew(char **paco)
@@ -50,7 +62,7 @@ int	parse_path_utils(t_map *map, char **paco)
 		|| !ft_strcmp(paco[0], "SO") || !ft_strcmp(paco[0], "EA")
 	|| !ft_strcmp(paco[0], "WE")))
 	{
-		fd = open(paco[1], O_CREAT | O_RDWR);
+		fd = open(paco[1], O_RDWR);
 		if (fd == -1)
 			return (1);
 		close(fd);
@@ -75,7 +87,8 @@ int	parse_path(t_map *map, char **ptr)
 			continue ;
 		}
 		paco = ft_split(ptr[i], ' ');
-		parse_path_utils(map, paco);
+		if (parse_path_utils(map, paco))
+			return (1);
 		i++;
 		free2d(paco);
 	}

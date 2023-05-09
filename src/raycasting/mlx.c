@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajafy <ajafy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:54:07 by ajafy             #+#    #+#             */
-/*   Updated: 2023/05/05 09:54:08 by ajafy            ###   ########.fr       */
+/*   Created: 2023/05/05 09:51:15 by ajafy             #+#    #+#             */
+/*   Updated: 2023/05/05 10:33:05 by ajafy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "../../inc/cube.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+void	my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
 {
-	unsigned int	i;
+	char	*pxl;
 
-	i = 0;
-	while (s1 && s2 && (s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		if ((unsigned char) s1[i] == (unsigned char) s2[i])
-			i++;
-		else if ((unsigned char) s1[i] > (unsigned char) s2[i])
-			return (1);
-		else
-			return (-1);
+		pxl = img->adrs + (y * img->line_len + x * \
+		(img->bp / 8));
+		*(unsigned int *)pxl = color;
 	}
-	return (0);
 }
